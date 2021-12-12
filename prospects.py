@@ -4,7 +4,7 @@ import pandas as pd
 headers = {'User Agent':'Mozilla/5.0'}
 
 players = [
-    'cade-cunningham','jalen-suggs','evan-mobley', 'franz-wagner', 'davion-mitchell', 
+    'cade-cunningham', 'jalen-suggs','evan-mobley', 'franz-wagner', 'davion-mitchell', 
     'scottie-barnes','moses-moody', 'james-bouknight', 'ziaire-williams', 'corey-kispert', 'tre-mann', 'ayo-dosunmu',
     'max-abmas', 'kai-jones', 'josh-christopher', 'nahshon-hyland', 'jaden-springer', 'cameron-thomas', 'miles-mcbride', 
     'johnny-juzang', 'charles-bassey', 'chris-duarte', 'marcus-bagley', 'jeremiah-robinson-earl', 'sharife-cooper', 
@@ -16,7 +16,10 @@ players = [
     'aamir-simms', 'trendon-watford', 'justin-champagnie', 'austin-reaves', 'makur-maker', 'julian-champagnie',
     'keve-aluma','dejon-jarreau', 'ej-liddell', 'jaquori-mclaughlin', 'derek-culver', 'moussa-cisse', 'michael-devoe',
     'mckinley-wrightiv']
+
 player_stats = []
+playerlist = []
+
 for player in players:
     try:
         url = (f'https://www.sports-reference.com/cbb/players/{player}-1.html')
@@ -26,9 +29,11 @@ for player in players:
         rows = soup.findAll('tr')
         player_stats.append([td.getText() for td in soup.find('tr', id ='players_per_game.2021')])
         table = pd.DataFrame(player_stats, columns = header)
+        player = player.replace('-',' ').title()
+        playerlist.append(player)
         
     except:
-        continue
-    
-table['Name'] = players
+        continue 
+     
+table.insert(0, "Name", playerlist)
 print(table)
