@@ -1,10 +1,10 @@
 # 2021-NBA-Draft-Prospect-Stats
 College stats for each player from the 2020 season 
 
-from bs4 import BeautifulSoup
-import requests 
-import pandas as pd 
-headers = {'User Agent':'Mozilla/5.0'}
+    from bs4 import BeautifulSoup
+    import requests 
+    import pandas as pd 
+    headers = {'User Agent':'Mozilla/5.0'}
 
     players = [
         'cade-cunningham', 'jalen-suggs','evan-mobley', 'franz-wagner', 'davion-mitchell', 
