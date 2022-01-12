@@ -29,9 +29,12 @@ for player in players:
         player_stats.append([td.getText() for td in soup.find('tr', id ='players_per_game.2022')])
         table = pd.DataFrame(player_stats, columns = header)
         player = player.replace('-',' ').title()
-        for char in player:
-            if char.isdigit():
-                player = player.replace(char, '')
+        if player[-1].isdigit():
+            player = player[:-2]
+        
+        if player[-2:] == 'jr':
+            player = player.replace('jr', ' Jr')
+        
         playerlist.append(player)
         
     except:
@@ -39,6 +42,5 @@ for player in players:
      
 table.insert(0, "Name", playerlist)
 print(table)
-
 
 
