@@ -11,7 +11,8 @@ players = ['paolo-banchero', 'jabari-smith-2', 'chet-holmgren', 'jaden-ivey', 'b
            'jamaree-bouyea', 'jaime-jaquezjr', 'johnny-juzang', 'jahvon-quinerly', 'matthew-mayer', 
            'trevor-keels', 'orlando-robinson', 'taevion-kinsey', 'anthony-duruji', 'keon-ellis',
            'julian-champagnie', 'ej-liddell', 'michael-devoe', 'andrew-nembhard', 'oscar-tshiebwe',
-           'iverson-molinar', 'jahmir-young', 'tyson-etienne', 'alex-barcello', 'max-abmas']
+           'iverson-molinar', 'jahmir-young', 'tyson-etienne', 'alex-barcello', 'max-abmas', 'kevin-obanor',
+           'brady-manek', 'izaiah-brockington', 'moussa-diabate']
 
 player_stats = []
 playerlist = []
@@ -42,5 +43,3 @@ for player in players:
      
 table.insert(0, "Name", playerlist)
 print(table)
-
-
