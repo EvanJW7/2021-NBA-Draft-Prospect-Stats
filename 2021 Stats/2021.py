@@ -64,11 +64,11 @@ table['3P%'] = table['3P%'].astype(float)
 
 per40 = 40/table['MP']
 
-table["Player Grade"] = ((table['PTS']*per40) + (table['TRB']*1.25*per40) + (table['AST']*2*per40) +
-(table['BLK']*3*per40) + (table['STL']*3*per40) + (table['3P']*7*per40)+ (table['FT%']*7) + (table['SOS']) + 
+table["Player Grade"] = ((table['PTS']*per40) + (table['TRB']*1.5*per40) + (table['AST']*2*per40) +
+(table['BLK']*3*per40) + (table['STL']*3*per40) + (table['3P']*5*per40)+ (table['FT%']*7) + (table['SOS']) + 
 (table['3P%']*10))  
 
-table["Player Grade"] = table["Player Grade"]*1.10
+table["Player Grade"] = table["Player Grade"]*1.15
 table["Player Grade"] = (round(table["Player Grade"]))
 table["Player Grade"]= table["Player Grade"].astype(int)
                         
