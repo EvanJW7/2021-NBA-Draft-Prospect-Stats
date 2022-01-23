@@ -5,7 +5,7 @@ import pandas as pd
 headers = {'User Agent':'Mozilla/5.0'}
 
 players = [
-    'kyrie-irving', 'derrick-williams-2', 'tristan-thompson', 'brandon-knight', 'kemba-walker', 
+    'kyrie-irving', 'derrick-williams-2', 'tristan-thompson-2', 'brandon-knight', 'kemba-walker', 
     'jimmer-fredette', 'klay-thompson','alec-burks', 'markieff-morris', 'marcus-morris', 'kawhi-leonard', 
     'nikola-vucevic', 'iman-shumpert', 'chris-singleton','tobias-harris', 'nolan-smith', 'kenneth-faried', 
     'reggie-jackson', 'marshon-brooks', 'jordan-hamilton', 'jajuan-johnson', 'norris-cole', 'cory-joseph', 
