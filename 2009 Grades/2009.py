@@ -6,13 +6,13 @@ headers = {'User Agent':'Mozilla/5.0'}
 
 players = [
     'blake-griffin', 'hasheem-thabeet', 'james-harden', 'tyreke-evans', 'jonny-flynn', 'stephen-curry',  
-    'jordan-hill', 'demar-derozan', 'terrence-williams', 'gerald-henderson', 'tyler-hansbrough', 
-    'earl-clark', 'austin-daye', 'james-johnson-2', 'jure-holiday', 'ty-lawson', 'jeff-teague', 
+    'jordan-hill', 'demar-derozan', 'terrence-williams', 'gerald-henderson-2', 'tyler-hansbrough', 
+    'earl-clark', 'austin-daye', 'james-johnson-2', 'jrue-holiday', 'ty-lawson', 'jeff-teague', 
     'eric-maynor', 'darren-collison', 'demarre-carroll', 'wayne-ellington', 'toney-douglas', 'jeff-ayres', 
     'jermaine-taylor', 'dante-cunningham', 'dajuan-summers', 'sam-young',  'dejuan-blair', 'jon-brockman', 
-    'derrick-brown', 'jodie-meeks', 'patrick-beverly', 'chase-budinger', 'nick-calathes', 
-    'danny-green', 'taylor-griffin', 'goran-suton', 'jack-mcclinton', 'aj-price', 'robert-vaden', 
-    'patrick-mills',  'robert-dozier']
+    'derrick-brown', 'jodie-meeks', 'patrick-beverly', 'chase-budinger', 'nick-calathes', 'byron-mullins',
+    'danny-green', 'taylor-griffin', 'goran-suton', 'jack-mcclinton', 'aj-price', 'patrick-mills', 
+    'taj-gibson', 'robert-dozier', 'marcus-thornton']
    
 player_stats = []
 playerlist = []
@@ -81,7 +81,9 @@ for player in players:
     except:
         age_list.append(22)
         year_list.append(.85)
-  
+
+year_list[-1] = .79
+age_list[-1] = 22
 table.insert(0, "Name", playerlist)
 table.insert(2, "Year", year_list)
 table.insert(2, "Age", age_list)
@@ -100,13 +102,11 @@ table['PF'] = table['PF'].astype(float)
 table['FT%'] = table['FT%'].astype(float)
 table['3P%'] = table['3P%'].astype(float)
 
-per40 = 40/table['MP']
-
-table["Player Grade"] = ((table['PTS']*per40) + (table['TRB']*1.5*per40) + (table['AST']*2*per40) +
-(table['BLK']*3*per40) + (table['STL']*3*per40) + (table['3P']*5*per40)+ (table['FT%']*7) + (table['SOS']) + 
+table["Player Grade"] = ((table['PTS']) + (table['TRB']*1.5) + (table['AST']*2) +
+(table['BLK']*3) + (table['STL']*3) + (table['3P']*5)+ (table['FT%']*7) + (table['SOS']) + 
 (table['3P%']*10)) * table['Year']
 
-table["Player Grade"] = table["Player Grade"]*1.25
+table["Player Grade"] = table["Player Grade"]*1.50
 table["Player Grade"] = (round(table["Player Grade"], 1))
 table["Player Grade"]= table["Player Grade"].astype(float)
                         
@@ -128,5 +128,7 @@ del table['2P']
 del table['2PA']
 del table['2P%']
 del table['Year']
-del table['Age']
+del table['TOV']
+del table['PF']
+
 print(table)
