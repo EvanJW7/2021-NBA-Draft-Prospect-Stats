@@ -3,15 +3,15 @@ import requests
 import pandas as pd 
 headers = {'User Agent':'Mozilla/5.0'}
 
-players = ['anthony-edwards-2', 'james-wiseman', 'patrick-williams-2', 'isaac-okoro', 'onyeka-okongwu', 
-           'obadiah-toppin', 'jalen-smith', 'devin-vassell', 'tyrese-haliburton', 'kira-lewisjr', 'aaron-nesmith', 
-           'cole-anthony', 'isaiah-stewart-2', 'josh-green-2','saddiq-bey', 'precious-achiuwa', 'tyrese-maxey', 
-           'zeke-nnaji', 'immanuel-quickley', 'payton-pritchard',  'udoka-azubuike', 'jaden-mcdaniels', 
-           'malachi-flynn', 'desmond-bane', 'tyrell-terry', 'vernon-careyjr', 'daniel-oturu', 'xavier-tillman', 
-           'tyler-bey', 'saben-lee', 'elijah-hughes', 'robert-woodard-2', 'tre-jones', 'nick-richards-2', 
-           'jahmius-ramsey', 'jordan-nwora', 'cj-elleby', 'nico-mannion', 'isaiah-joe', 'skylar-mays', 
-           'justinian-jessup', 'cassius-winston', 'cassius-stanley', 'jay-scrubb', 'grant-riller', 'reggie-perry-2', 
-           'paul-reed-5', 'jalen-harris-2', 'sam-merrill']
+players = ['payton-pritchard', 'daniel-oturu', 'elijah-hughes', 'jalen-harris-2', 'xavier-tillman', 'tre-jones',
+           'jahmius-ramsey', 'jaden-mcdaniels', 'zeke-nnaji', 'isaac-okoro', 'anthony-edwards-2', 'james-wiseman', 
+           'patrick-williams-2',  'onyeka-okongwu', 'obadiah-toppin', 'jalen-smith', 'devin-vassell', 
+           'tyrese-haliburton', 'kira-lewisjr', 'aaron-nesmith', 'cole-anthony', 'isaiah-stewart-2', 
+           'josh-green-2','saddiq-bey', 'precious-achiuwa', 'tyrese-maxey', 'immanuel-quickley', 'udoka-azubuike', 
+           'malachi-flynn', 'desmond-bane', 'tyrell-terry', 'vernon-careyjr', 'tyler-bey', 'saben-lee', 
+           'robert-woodard-2', 'nick-richards-2', 'jordan-nwora', 'cj-elleby', 'nico-mannion', 'isaiah-joe', 
+           'skylar-mays', 'justinian-jessup', 'cassius-winston', 'cassius-stanley', 'jay-scrubb', 'grant-riller', 
+           'reggie-perry-2', 'paul-reed-5', 'sam-merrill']
 
 player_stats = []
 playerlist = []
@@ -44,6 +44,7 @@ for player in players:
     except:
         continue
     try:
+        player = player.replace('-', '+')
         url = f'https://www.google.com/search?q={player}+basketball+birth+date'
         res = requests.get(url)
         soup = BeautifulSoup(res.content, 'lxml')
@@ -78,9 +79,29 @@ for player in players:
         year_list.append(year)
         
     except:
-        age_list.append(22)
+        age_list.append(0)
         year_list.append(.85)
 
+age_list[0] = 22.4
+year_list[0] = .75
+age_list[1] = 20.8
+year_list[1] = .90
+age_list[2] = 22.3
+year_list[2] = .76
+age_list[3] = 21.8
+year_list[3] = .81
+age_list[4] = 21.4
+year_list[4] = .84
+age_list[5] = 20.4
+year_list[5] = .94
+age_list[6] = 19.1
+year_list[6] = 1.05
+age_list[7] = 19.8
+year_list[7] = 1
+age_list[8] = 19.5
+year_list[8] = 1.03
+age_list[9] = 19.4
+year_list[9] = 1.04
 
 table.insert(0, "Name", playerlist)
 table.insert(2, "Year", year_list)
@@ -99,13 +120,11 @@ table['PF'] = table['PF'].astype(float)
 table['FT%'] = table['FT%'].astype(float)
 table['3P%'] = table['3P%'].astype(float)
 
-per40 = 40/table['MP']
-
-table["Player Grade"] = ((table['PTS']*per40) + (table['TRB']*1.5*per40) + (table['AST']*2*per40) +
-(table['BLK']*3*per40) + (table['STL']*3*per40) + (table['3P']*5*per40)+ (table['FT%']*7) + (table['SOS']) + 
+table["Player Grade"] = ((table['PTS']) + (table['TRB']*1.5) + (table['AST']*2) +
+(table['BLK']*3) + (table['STL']*3) + (table['3P']*5)+ (table['FT%']*7) + (table['SOS']) + 
 (table['3P%']*10)) * table['Year']
 
-table["Player Grade"] = table["Player Grade"]*1.25
+table["Player Grade"] = table["Player Grade"]*1.50
 table["Player Grade"] = (round(table["Player Grade"], 1))
 table["Player Grade"]= table["Player Grade"].astype(float)
                         
@@ -127,5 +146,7 @@ del table['2P']
 del table['2PA']
 del table['2P%']
 del table['Year']
-del table['Age']
+del table['TOV']
+del table['PF']
+
 print(table)
