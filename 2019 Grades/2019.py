@@ -5,14 +5,15 @@ import pandas as pd
 headers = {'User Agent':'Mozilla/5.0'}
 
 players = [
-    'zion-williamson', 'temetrius-morant', 'rj-barrett', 'deandre-hunter', 'darius-garland', 'jarrett-culver',
-    'coby-white', 'jaxon-hayes', 'rui-hachimura', 'cam-reddish', 'cameron-johnson-4', 'pj-washington', 'tyler-herro',
-    'romeo-langford', 'chuma-okeke', 'nickeil-alexander-walker', 'matisse-thybulle', 'brandon-clarke', 'grant-williams',
-    'ty-jerome', 'nassir-little', 'dylan-windler', 'mfiondu-kabengele', 'jordan-poole', 'keldon-johnson', 
-    'kevin-porterjr', 'nic-claxton', 'kz-okpala', 'carsen-edwards', 'bruno-fernando', 'cody-martin', 'daniel-gafford',
-    'justin-james', 'eric-paschall', 'admiral-schofield', 'jaylen-nowell', 'bol-bol', 'isaiah-roby', 'talen-horton-tucker', 
-    'ignas-brazdeikis', 'terance-mann', 'quinndary-weatherspoon', 'tremont-waters', 'jalen-mcdaniels', 'marial-shayok',
-    'kyle guy', 'jaylen-hands', 'jordan-bone', 'miye-oni', 'dewan-hernandez']
+    'darius-garland', 'tyler-herro', 'talen-horton-tucker', 'tremont-waters', 'brandon-clarke', 'eric-paschall',
+    'ignas-brazdeikis', 'jalen-mcdaniels', 'zion-williamson', 'temetrius-morant', 'rj-barrett', 'deandre-hunter', 
+    'jarrett-culver', 'coby-white', 'jaxon-hayes', 'rui-hachimura', 'cam-reddish', 'cameron-johnson-4', 
+    'pj-washington', 'romeo-langford', 'chuma-okeke', 'nickeil-alexander-walker', 'matisse-thybulle', 
+    'grant-williams','ty-jerome', 'nassir-little', 'dylan-windler', 'mfiondu-kabengele', 'jordan-poole', 
+    'keldon-johnson', 'kevin-porterjr', 'nic-claxton', 'kz-okpala', 'carsen-edwards', 'bruno-fernando', 
+    'cody-martin', 'daniel-gafford', 'justin-james', 'admiral-schofield', 'jaylen-nowell', 'bol-bol', 
+    'isaiah-roby', 'terance-mann', 'quinndary-weatherspoon', 'marial-shayok','kyle guy', 'jaylen-hands', 
+    'jordan-bone', 'miye-oni', 'dewan-hernandez','caleb-martin', 'luguentz-dort', 'naz-reid', 'garrison-matthews']
    
 player_stats = []
 playerlist = []
@@ -79,13 +80,29 @@ for player in players:
         year_list.append(year)
         
     except:
-        age_list.append(22)
-        year_list.append(.85)
+        age_list.append(0)
+        year_list.append(1)
 
+age_list[0] = 19.5
+year_list[0] = 1.04
+age_list[1] = 19.5
+year_list[1] = 1.04
+age_list[2] = 18.6
+year_list[2] = 1.12
+age_list[3] = 21.5
+year_list[3] = .83
+age_list[4] = 22.7
+year_list[4] = .72
+age_list[5] = 22.6
+year_list[5] = .73
+age_list[6] = 20.4
+year_list[6] = .95
+age_list[7] = 21.4
+year_list[7] = .85
 
 table.insert(0, "Name", playerlist)
 table.insert(2, "Year", year_list)
-table.insert(2, "Age", age_list)
+table.insert(3, "Age", age_list)
 table['MP'] = table['MP'].astype(float)
 table['PTS'] = table['PTS'].astype(float)
 table['AST'] = table['AST'].astype(float)
@@ -100,13 +117,11 @@ table['PF'] = table['PF'].astype(float)
 table['FT%'] = table['FT%'].astype(float)
 table['3P%'] = table['3P%'].astype(float)
 
-per40 = 40/table['MP']
-
-table["Player Grade"] = ((table['PTS']*per40) + (table['TRB']*1.5*per40) + (table['AST']*2*per40) +
-(table['BLK']*3*per40) + (table['STL']*3*per40) + (table['3P']*5*per40)+ (table['FT%']*7) + (table['SOS']) + 
+table["Player Grade"] = ((table['PTS']) + (table['TRB']*1.5) + (table['AST']*2) +
+(table['BLK']*3) + (table['STL']*3) + (table['3P']*5)+ (table['FT%']*7) + (table['SOS']) + 
 (table['3P%']*10)) * table['Year']
 
-table["Player Grade"] = table["Player Grade"]*1.15
+table["Player Grade"] = table["Player Grade"]*1.50
 table["Player Grade"] = (round(table["Player Grade"], 1))
 table["Player Grade"]= table["Player Grade"].astype(float)
                         
@@ -128,5 +143,7 @@ del table['2P']
 del table['2PA']
 del table['2P%']
 del table['Year']
-del table['Age']
+del table['TOV']
+del table['PF']
+
 print(table)
