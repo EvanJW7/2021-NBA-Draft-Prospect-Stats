@@ -5,4 +5,4 @@ This program grades and ranks prospects based on a back-tested weighted sum of a
 <img width="1008" alt="Screen Shot 2022-05-03 at 10 27 14 AM" src="https://user-images.githubusercontent.com/84414002/166485478-5103f187-7bd4-4727-bc24-79129cc4cc06.png">
 
 
-<img width="995" alt="Screen Shot 2022-05-03 at 10 24 46 AM" src="https://user-images.githubusercontent.com/84414002/166484058-5a7b69a1-70da-49b6-a594-8fb475bad6ff.png">
+<img width="1008" alt="Screen Shot 2022-05-03 at 10 24 46 AM" src="https://user-images.githubusercontent.com/84414002/166484058-5a7b69a1-70da-49b6-a594-8fb475bad6ff.png">
