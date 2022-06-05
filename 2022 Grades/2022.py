@@ -12,7 +12,7 @@ players = ['paolo-banchero', 'jabari-smith-2', 'jonathan-davis-3', 'ej-liddell',
            'jaime-jaquezjr', 'johnny-juzang', 'jahvon-quinerly', 'matthew-mayer', 'trevor-keels',  
            'walker-kessler', 'kameron-mcgusty', 'michael-devoe',  'iverson-molinar', 'keve-aluma', 
            'christian-braun','tyson-etienne', 'alex-barcello', 'max-abmas', 'kevin-obanor', 'brady-manek', 
-           'izaiah-brockington', 'jd-davison', 'aj-griffin', 'tari-eason','jabari-walker']
+           'izaiah-brockington', 'jd-davison', 'aj-griffin', 'tari-eason','jabari-walker', 'scotty-pippenjr']
 
 player_stats = []
 playerlist = []
@@ -75,12 +75,12 @@ for player in players:
         age_on_draft_night = draft_date_final - birth_date_final
         age = round(age_on_draft_night.days/365, 1)
         age_list.append(age)
-        year = round(((1-(age/30))*2.95), 2)
+        year = round(((1-(age/35))*2.33), 2)
         year_list.append(year)
         
     except:
         age_list.append("No data")
-        year_list.append(.50)
+        year_list.append(1)
 
 age_list[1] = 19.1
 year_list[1] = 1.07
@@ -125,11 +125,10 @@ table['PF'] = table['PF'].astype(float)
 table['FT%'] = table['FT%'].astype(float)
 table['3P%'] = table['3P%'].astype(float)
 
-table["Player Grade"] = ((table['PTS']) + (table['TRB']*1.5) + (table['AST']*2) +
-(table['BLK']*3) + (table['STL']*3) + (table['3P']*5)+ (table['FT%']*7) + (table['SOS']) + 
-(table['3P%']*10)) * table['Year']
+table["Player Grade"] = ((table['PTS']) + (table['TRB']*1.25) + (table['AST']*2) +
+(table['BLK']*2) + (table['STL']*3) + (table['3P']*2) + (table['3PA']) + (table['SOS']/2)) * table['Year']
 
-table["Player Grade"] = table["Player Grade"]*1.5
+table["Player Grade"] = table["Player Grade"]*1.75
 table["Player Grade"] = (round(table["Player Grade"], 1))
 table["Player Grade"]= table["Player Grade"].astype(float)
                         
